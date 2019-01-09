@@ -74,7 +74,7 @@ class ViewController: UIViewController {
                                              multiplier: 1.0,
                                              constant: 0.0)
         
-        let purpleCenterY = NSLayoutConstraint(item: purpleSquare,
+        let purpleTop = NSLayoutConstraint(item: purpleSquare,
                                                attribute: .top,
                                                relatedBy: .equal,
                                                toItem: greenSquare,
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
                                                multiplier: 1.0,
                                                constant: 10.0)
         
-        let purpleCenterX = NSLayoutConstraint(item: view,
+        let purpleButtom = NSLayoutConstraint(item: view,
                                                attribute: .bottom,
                                                relatedBy: .equal,
                                                toItem: purpleSquare,
@@ -90,7 +90,16 @@ class ViewController: UIViewController {
                                                multiplier: 1.0,
                                                constant: 10.0)
         
-        NSLayoutConstraint.activate([purpleHeight, purpleWidth, purpleCenterY, purpleCenterX])
+        let purpleCentreX = NSLayoutConstraint(item: purpleSquare,
+                                               attribute: .centerX,
+                                               relatedBy: .equal,
+                                               toItem: view,
+                                               attribute: .centerX,
+                                               multiplier: 1.0,
+                                               constant: 0.0)
+        
+        
+        NSLayoutConstraint.activate([purpleHeight, purpleWidth, purpleTop, purpleButtom, purpleCentreX])
         
     }
 
