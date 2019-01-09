@@ -51,6 +51,47 @@ class ViewController: UIViewController {
                                                   constant: 0.0)
         
         NSLayoutConstraint.activate([heightConstraint, widthConstraint, centerXContraint, centerYContraint])
+        
+        let purpleSquare = UIView()
+        purpleSquare.translatesAutoresizingMaskIntoConstraints = false
+        purpleSquare.backgroundColor = .purple
+        view.addSubview(purpleSquare)
+        
+        
+        let purpleHeight = NSLayoutConstraint(item: purpleSquare,
+                                              attribute: .height,
+                                              relatedBy: .equal,
+                                              toItem: nil,
+                                              attribute: .notAnAttribute,
+                                              multiplier: 1.0,
+                                              constant: 200)
+        
+        let purpleWidth = NSLayoutConstraint(item: purpleSquare,
+                                             attribute: .width,
+                                             relatedBy: .equal,
+                                             toItem: purpleSquare,
+                                             attribute: .height,
+                                             multiplier: 1.0,
+                                             constant: 0.0)
+        
+        let purpleCenterY = NSLayoutConstraint(item: purpleSquare,
+                                               attribute: .top,
+                                               relatedBy: .equal,
+                                               toItem: greenSquare,
+                                               attribute: .bottom,
+                                               multiplier: 1.0,
+                                               constant: 10.0)
+        
+        let purpleCenterX = NSLayoutConstraint(item: view,
+                                               attribute: .bottom,
+                                               relatedBy: .equal,
+                                               toItem: purpleSquare,
+                                               attribute: .bottom,
+                                               multiplier: 1.0,
+                                               constant: 10.0)
+        
+        NSLayoutConstraint.activate([purpleHeight, purpleWidth, purpleCenterY, purpleCenterX])
+        
     }
 
 
