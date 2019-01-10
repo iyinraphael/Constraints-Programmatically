@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         greenSquare.backgroundColor = .green
         view.addSubview(greenSquare)
         
+
+        
         let widthConstraint = NSLayoutConstraint(item: greenSquare,
                                                  attribute: .width,
                                                  relatedBy: .equal,
@@ -25,6 +27,8 @@ class ViewController: UIViewController {
                                                  attribute: .notAnAttribute,
                                                  multiplier: 1.0,
                                                  constant: 200.0)
+        
+        greenwWidthContraint = widthConstraint
         
         let heightConstraint = NSLayoutConstraint(item: greenSquare,
                                                   attribute: .height,
@@ -41,6 +45,7 @@ class ViewController: UIViewController {
                                                   attribute: .centerY,
                                                   multiplier: 1.0,
                                                   constant: 0.0)
+        greenCentreYContraints = centerYContraint
         
         let centerXContraint = NSLayoutConstraint(item: greenSquare,
                                                   attribute: .centerX,
@@ -55,9 +60,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func animate(_ sender: Any) {
+        UIView.animate(withDuration: 0.5) {
+            self.greenwWidthContraint.constant = 300
+            self.greenCentreYContraints.constant = -100
+            self.view.layoutIfNeeded()
+        }
     }
     
     var greenwWidthContraint:NSLayoutConstraint!
+    var greenCentreYContraints: NSLayoutConstraint!
     
 }
 
