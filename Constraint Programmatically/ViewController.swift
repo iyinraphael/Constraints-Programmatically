@@ -13,10 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
         let greenSquare = UIView()
-        greenSquare.translatesAutoresizingMaskIntoConstraints = false
+        let purpleSquare = UIView()
+       
         greenSquare.backgroundColor = .green
+        purpleSquare.backgroundColor = .purple
+        
         view.addSubview(greenSquare)
+        view.addSubview(purpleSquare)
         
 
         
