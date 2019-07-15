@@ -112,10 +112,11 @@ class ViewController: UIViewController {
 
     @IBAction func animate(_ sender: Any) {
         UIView.animate(withDuration: 0.5) {
+            
             self.greenwWidthContraint.constant = 300
             self.greenCentreYContraints.constant = -100
             
-            self.purpleCentreYConstraint.constant = 300
+            self.purpleWidthConstraint.constant = 300
             self.view.layoutIfNeeded()
         }
     }
