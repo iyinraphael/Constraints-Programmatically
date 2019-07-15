@@ -13,11 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
         let greenSquare = UIView()
         let purpleSquare = UIView()
-       
+        
+        greenSquare.translatesAutoresizingMaskIntoConstraints = false
+        purpleSquare.translatesAutoresizingMaskIntoConstraints = false
+        
         greenSquare.backgroundColor = .green
         purpleSquare.backgroundColor = .purple
         
@@ -61,7 +62,51 @@ class ViewController: UIViewController {
                                                   multiplier: 1.0,
                                                   constant: 0.0)
         
-        NSLayoutConstraint.activate([heightConstraint, widthConstraint, centerXContraint, centerYContraint])
+        let purpleWidthContraint = NSLayoutConstraint(item: purpleSquare,
+                                                      attribute: .width,
+                                                      relatedBy: .equal,
+                                                      toItem: nil,
+                                                      attribute: .notAnAttribute,
+                                                      multiplier: 1.0,
+                                                      constant: 200.0)
+        purpleWidthConstraint = purpleWidthContraint
+        
+        let purpleHeightContraint = NSLayoutConstraint(item: purpleSquare,
+                                                 attribute: .height,
+                                                 relatedBy: .equal,
+                                                 toItem: purpleSquare,
+                                                 attribute: .width,
+                                                 multiplier: 1.0,
+                                                 constant: 0.0)
+        
+        let purpleCenterYConstraint = NSLayoutConstraint(item: purpleSquare,
+                                                   attribute: .top,
+                                                   relatedBy: .greaterThanOrEqual,
+                                                   toItem: greenSquare,
+                                                   attribute: .bottom,
+                                                   multiplier: 1.0,
+                                                   constant: 20.0)
+        
+         purpleCentreYConstraint = purpleCenterYConstraint
+        
+        let purpleCenterXConstraint = NSLayoutConstraint(item: purpleSquare,
+                                                         attribute: .centerX,
+                                                         relatedBy: .equal,
+                                                         toItem: view,
+                                                         attribute: .centerX,
+                                                         multiplier: 1.0,
+                                                         constant: 0.0)
+        
+        NSLayoutConstraint.activate([
+            heightConstraint,
+            widthConstraint,
+            centerXContraint,
+            centerYContraint,
+            purpleWidthContraint,
+            purpleHeightContraint,
+            purpleCenterYConstraint,
+            purpleCenterXConstraint
+            ])
 
     }
 
@@ -69,12 +114,16 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.greenwWidthContraint.constant = 300
             self.greenCentreYContraints.constant = -100
+            
+            self.purpleCentreYConstraint.constant = 300
             self.view.layoutIfNeeded()
         }
     }
     
     var greenwWidthContraint:NSLayoutConstraint!
     var greenCentreYContraints: NSLayoutConstraint!
+    var purpleWidthConstraint: NSLayoutConstraint!
+    var purpleCentreYConstraint: NSLayoutConstraint!
     
 }
 
